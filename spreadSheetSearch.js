@@ -1,4 +1,4 @@
-/*jslint browser:true */
+/*jslint browser: true*/
 var spreadSheetData = {};
 function parseData(entry) {
     "use strict";
@@ -72,7 +72,6 @@ function printResults(results) {
     "use strict";
     var searchresults = document.getElementById("spreadSheetSearchResults"),
         i,
-        string,
         row,
         name,
         email,
@@ -80,10 +79,16 @@ function printResults(results) {
         areasOfInterest,
         position,
         city,
-        country;
+        country,
+        offset;
     if (results.length === 0) {
-        document.getElementById("spreadSheetSearchResultsMsg").innerHTML = " No Results Found ";
-        searchresults.innerHTML="";
+        document.getElementById("spreadSheetSearchResultsMsg").innerHTML = "No Results Found";
+        offset = $("#spreadSheetSearchResultsMsg").offset();
+        offset.top -= 50;
+        $('html, body').animate({
+            scrollTop: offset.top
+        });
+        searchresults.innerHTML = "";
     } else {
         document.getElementById("spreadSheetSearchResultsMsg").innerHTML = "Total Results Found :" + results.length + "<br>Search Results:";
         searchresults.innerHTML = "";
@@ -103,7 +108,7 @@ function printResults(results) {
         city.innerHTML = "<div>" + spreadSheetData[1].city + "</div>";
         country.innerHTML = "<div>" + spreadSheetData[1].country + "</div>";
         for (i = 0; i < results.length; i = i + 1) {
-            row = searchresults.insertRow(i+1);
+            row = searchresults.insertRow(i + 1);
             name = row.insertCell(0);
             email = row.insertCell(1);
             affliation = row.insertCell(2);
@@ -111,7 +116,7 @@ function printResults(results) {
             position = row.insertCell(4);
             city = row.insertCell(5);
             country = row.insertCell(6);
-            name.innerHTML = "<div>" + results[i].name + "</div>" ;
+            name.innerHTML = "<div>" + results[i].name + "</div>";
             email.innerHTML = "<div>" + results[i].email + "</div>";
             affliation.innerHTML = "<div>" + results[i].affiliation + "</div>";
             areasOfInterest.innerHTML = "<div>" + results[i].areasOfInterest + "</div>";
@@ -123,19 +128,21 @@ function printResults(results) {
 }
 function search() {
     "use strict";
+    if (!(spreadSheetData.length)) {
+        document.getElementById("spreadSheetSearchResultsMsg").innerHTML = "Something went wrong :( ... Please Refresh the page ";
+        return;
+    }
     var searchparameters = {},
         results;
     searchparameters.keyword = document.getElementById("spreadSheetSearchKeyword").value;
     searchparameters.column = document.getElementById("spreadSheetSearchColumn").value;
     results = findmatches(searchparameters.keyword, searchparameters.column);
-    window.console.log(results[0]);
     printResults(results);
 }
-function myFunc(data) {
+function spreadSheedSearchCallback(data) {
     "use strict";
     var entry = data.feed.entry;
     parseData(entry);
-        
-    console.log(spreadSheetData);
-    document.getElementById("spreadSheetSearch").addEventListener("click", search);
+    document.getElementById("spreadSheetSearch").style.visibility = "visible";
+//        console.log(spreadSheetData);
 }
