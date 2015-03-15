@@ -1,128 +1,33 @@
 <!DOCTYPE html>
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="https://github.com/downloads/jaubourg/jquery-jsonp/jquery.jsonp-2.4.0.min.js"></script>
-<script src = "spreadSheetSearch.js"></script>
-<style type="text/css">
-    #spreadSheetSearchBar, #spreadSheetSearchResultsMsg {
-        font-family: sans-serif;
-        margin-left: auto;
-        margin-right: auto;
-        width: 550px;
-        text-align: center;
-    }
-    #spreadSheetSearchResultsMsg{
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-size: 13px;
-        font-weight: bold;
-        color: #52b17b;
-    }
-    #spreadSheetSearchKeyword{
-        font-size: 11px;
-        border-radius: 7px 0 0 7px;
-        text-indent: 10px;
-        background: #fff;
-        border: 1px solid #e7e9e8;
-        width: 300px;
-        height: 31px;
-    }
-   #spreadSheetSearchKeyword:hover , #spreadSheetSearchKeyword:focus{
-       outline: none;
-       border: 1px solid #52b17b;
-   }
-    #spreadSheetSearchColumn, #spreadSheetSearchColumn>option {
-        font-size: 11px;
-        -moz-appearance: none;
-        outline: none;
-        text-indent: 10px;
-        width: 130px;
-        background: #fff;
-        border-radius: 0 7px 7px 0;
-        border: 1px solid #e7e9e8;
-        height: 35px;
-    }
-    #spreadSheetSearchColumn:hover, #spreadSheetSearchColumn:focus{
-       border: 1px solid #52b17b;
-    }
-    #spreadSheetSearch::-moz-focus-inner {border:0;}
-    #spreadSheetSearch{
-        font-size: 11px;
-        outline: none;
-        background: #fff;
-        border-radius: 3px;
-        width: 80px;
-        border: 1px solid #e7e9e8;
-        height: 35px;
-        visibility: hidden;
-    }
-    #spreadSheetSearch:hover{
-        background: #52b17b;
-        color : #fff;
-    }
-    #spreadSheetSearchResults{
-        margin-left: auto;
-        margin-right: auto;
-        border-collapse: collapse;
-        table-layout:  fixed;
-    }
-    #spreadSheetSearchResults tr:nth-child(odd) td{
-        background: #e7e9e8;
-        border: 1px solid #fff;
-        overflow: hidden;
-    }
-    #spreadSheetSearchResults tr:first-child td{
-        background: #52b17b;
-        color: #fff;
-        font-weight: bold;
-        font-size: 14px;
-        height: 30px;
-    }
-    #spreadSheetSearchResults td{
-        border : 1px solid #e7e9e8;
-    }
-    #spreadSheetSearchResults div{
-        word-wrap: break-word;
-        font-size: 12px;
-        width: 170px;
-    }
-</style>
-<form id = "spreadSheetSearchBar" onsubmit=" return false;">
-<input type="text" id="spreadSheetSearchKeyword" />
-<select id = "spreadSheetSearchColumn" >
-    <option value="name">Name</option>
-<!--    <option value="email">Email</option>-->
-<!--    <option value="affiliation">Affliation</option>-->
-    <option value="areasOfInterest">Areas of Interest</option>
-<!--    <option value="position">Position</option>-->
-<!--    <option value="city">City</option>-->
-<!--    <option value="country">Country</option>-->
-</select>
-<input type="button" id="spreadSheetSearch" value = "Search" />
-</form>
-<div id ="spreadSheetSearchResultsMsg"></div>
-<table id="spreadSheetSearchResults">
-</table>
-<script src=""></script>
-<script>
-    $.jsonp({
-        "url": "https://spreadsheets.google.com/feeds/cells/0Aj407dw3Opv6dGtZc0FiNTBnQmw2b1hLY28zYnRNd2c/od6/public/values?alt=json-in-script&callback=?",
-        "callback": "spreadSheedSearchCallback",
-        "success": spreadSheedSearchCallback,
-        "error": function (xOptions, textStatus) {
-            document.getElementById("spreadSheetSearchResultsMsg").innerHTML = "Something went wrong :( ... Please Refresh the page<br> ";
-            return;
-        }
-    });
-    document.getElementById("spreadSheetSearch").addEventListener("click", search);
-    document.getElementById("spreadSheetSearchKeyword").addEventListener("keyup", search);
-    $(document).ready(function (){
-        $("#spreadSheetSearchKeyword").keydown(function (){
-            var offset = $(this).offset(); 
-            offset.top -= 50;
-            $('html, body').animate({
-                scrollTop: offset.top
-                });
-            });
-    });
-</script>
+<html>
 
+<head>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <form id="spreadSheetSearchBar" class="spreadSheetSearchBar" onsubmit="return false;">
+        <input type="text" id="spreadSheetSearchKeyword" class="spreadSheetSearchKeyword" />
+        <select id="spreadSheetSearchColumn" class="spreadSheetSearchColumn">
+        </select>
+        <input type="button" id="spreadSheetSearch" value="Search" class="spreadSheetSearch" />
+    </form>
+    <div id="spreadSheetSearchResultsMsg" class="spreadSheetSearchResultsMsg"></div>
+    <table id="spreadSheetSearchResults" class="spreadSheetSearchResults">
+    </table>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://github.com/downloads/jaubourg/jquery-jsonp/jquery.jsonp-2.4.0.min.js"></script>
+    <script src="spreadSheetSearch.js"></script>
+    <script>
+        spreadSheetData.setup.url = "";
+        spreadSheetData.setup.keyword = "spreadSheetSearchKeyword";
+        spreadSheetData.setup.column = "spreadSheetSearchColumn";
+        spreadSheetData.setup.search = "spreadSheetSearch";
+        spreadSheetData.setup.msg = "spreadSheetSearchResultsMsg";
+        spreadSheetData.setup.resulttable = "spreadSheetSearchResults";
+        spreadSheetData.setup.startCol = ;
+        spreadSheetSearchGetData();
+    </script>
+</body>
+
+</html>

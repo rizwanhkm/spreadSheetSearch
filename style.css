@@ -1,0 +1,104 @@
+.spreadSheetSearchBar,
+.spreadSheetSearchResultsMsg {
+    font-family: sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 550px;
+}
+
+.spreadSheetSearchResultsMsg {
+    color: #52b17b;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.spreadSheetSearchKeyword {
+    background: #fff;
+    border: 1px solid #e7e9e8;
+    border-radius: 7px 0 0 7px;
+    box-sizing: border-box;
+    font-size: 11px;
+    height: 31px;
+    text-indent: 10px;
+    width: 300px;
+}
+
+.spreadSheetSearchKeyword:hover,
+.spreadSheetSearchKeyword:focus {
+    border: 1px solid #52b17b;
+    outline: none;
+}
+
+.spreadSheetSearchColumn,
+.spreadSheetSearchColumn>option {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #e7e9e8;
+    border-radius: 0 7px 7px 0;
+    box-sizing: border-box;
+    font-size: 11px;
+    height: 35px;
+    text-indent: 10px;
+    width: 130px;
+}
+
+.spreadSheetSearchColumn:hover,
+.spreadSheetSearchColumn:focus {
+    border: 1px solid #52b17b;
+    outline: none;
+}
+
+.spreadSheetSearch::-moz-focus-inner {
+    border: 0;
+}
+
+.spreadSheetSearch {
+    background: #fff;
+    border: 1px solid #e7e9e8;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 11px;
+    height: 35px;
+    visibility: hidden;
+    width: 80px;
+}
+
+.spreadSheetSearch:hover {
+    background: #52b17b;
+    color: #fff;
+}
+
+.spreadSheetSearchResults {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+}
+
+.spreadSheetSearchResults tr:nth-child(odd) td {
+    background: #e7e9e8;
+    border: 1px solid #fff;
+    overflow: hidden;
+}
+
+.spreadSheetSearchResults tr:first-child td {
+    background: #52b17b;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    height: 30px;
+}
+
+.spreadSheetSearchResults td {
+    border: 1px solid #e7e9e8;
+}
+
+.spreadSheetSearchResults div {
+    font-size: 12px;
+    width: 170px;
+    word-wrap: break-word;
+}
