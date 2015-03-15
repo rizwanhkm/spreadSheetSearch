@@ -34,8 +34,6 @@
 
 .spreadSheetSearchColumn,
 .spreadSheetSearchColumn>option {
-    -moz-appearance: none;
-    -webkit-appearance: none;
     background: #fff;
     border: 1px solid #e7e9e8;
     border-radius: 0 7px 7px 0;
@@ -49,7 +47,6 @@
 .spreadSheetSearchColumn:hover,
 .spreadSheetSearchColumn:focus {
     border: 1px solid #52b17b;
-    outline: none;
 }
 
 .spreadSheetSearch::-moz-focus-inner {
