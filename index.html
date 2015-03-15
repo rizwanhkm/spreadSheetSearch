@@ -8,8 +8,7 @@
 <body>
     <form id="spreadSheetSearchBar" class="spreadSheetSearchBar" onsubmit="return false;">
         <input type="text" id="spreadSheetSearchKeyword" class="spreadSheetSearchKeyword" />
-        <select id="spreadSheetSearchColumn" class="spreadSheetSearchColumn">
-        </select>
+        <select id="spreadSheetSearchColumn" class="spreadSheetSearchColumn"></select>
         <input type="button" id="spreadSheetSearch" value="Search" class="spreadSheetSearch" />
     </form>
     <div id="spreadSheetSearchResultsMsg" class="spreadSheetSearchResultsMsg"></div>
@@ -25,7 +24,8 @@
         spreadSheetData.setup.search = "spreadSheetSearch";
         spreadSheetData.setup.msg = "spreadSheetSearchResultsMsg";
         spreadSheetData.setup.resulttable = "spreadSheetSearchResults";
-        spreadSheetData.setup.startCol = ;
+        spreadSheetData.setup.startCol = 2;
+        spreadSheetData.setup.defaultCol = ;
         spreadSheetSearchGetData();
     </script>
 </body>

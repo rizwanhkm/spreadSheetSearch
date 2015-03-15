@@ -7,7 +7,7 @@ Depends on:
 
 Setup:
 ---------
-spreadSheeData.setup take URL and IDs of required Elements and URL of the spreadSheet
+spreadSheeData.setup take URL and IDs of required Elements and URL of the spreadSheet as cells feed
 
 in index.html
 spreadSheetData.setup.url  = ''The URL of the spreadshee to be searched"

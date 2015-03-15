@@ -9,7 +9,8 @@ var spreadSheetData = {
         "search": "",
         "resulttable": "",
         "startRow": "",
-        "startCol": ""
+        "startCol": "",
+        "defaultCol": ""
     }
 };
 
@@ -27,6 +28,9 @@ function parseData(entry) {
     }
     if (!(spreadSheetData.setup.startCol)) {
         spreadSheetData.setup.startCol = 1;
+    }
+    if (!(spreadSheetData.setup.defaultCol)) {
+        spreadSheetData.setup.defaultCol = 1;
     }
     for (i = 0; parseInt(entry[i].gs$cell.row, 10) < (spreadSheetData.setup.startRow + 1); i = i + 1) {
         if (parseInt(entry[i].gs$cell.row, 10) === spreadSheetData.setup.startRow) {
@@ -111,11 +115,18 @@ function search() {
 
 function populateColumn() {
     "use strict";
-    var i, o;
+    var i,
+        o,
+        defaultCol = spreadSheetData.setup.defaultCol;
+    o = new Option(spreadSheetData[0][defaultCol], spreadSheetData[0][defaultCol]);
+    $(o).html(spreadSheetData[0][defaultCol]);
+    $("#" + spreadSheetData.setup.column).append(o);
     for (i = spreadSheetData.setup.startCol; i <= spreadSheetData.columns; i = i + 1) {
-        o = new Option(spreadSheetData[0][i], spreadSheetData[0][i]);
-        $(o).html(spreadSheetData[0][i]);
-        $("#" + spreadSheetData.setup.column).append(o);
+        if (i != defaultCol) {
+            o = new Option(spreadSheetData[0][i], spreadSheetData[0][i]);
+            $(o).html(spreadSheetData[0][i]);
+            $("#" + spreadSheetData.setup.column).append(o);
+        }
     }
 }
 
