@@ -3,6 +3,8 @@
 var spreadSheetData = {
     "setup": {
         "url": "",
+        "pageid": "",
+        "sheetid": "",
         "msg": "",
         "keyword": "",
         "column": "",
@@ -16,7 +18,8 @@ var spreadSheetData = {
 
 function spreadSheetSearchGetData() {
     "use strict";
-
+    spreadSheetData.setup.url = "https://spreadsheets.google.com/feeds/cells/" + spreadSheetData.setup.pageid + "/" + spreadSheetData.setup.sheetid + "/public/values?alt=json-in-script&callback=?";
+    console.log(spreadSheetData.setup.url);
     function parseData(entry) {
         var i = 0,
             entryLength = entry.length,
@@ -145,7 +148,7 @@ function spreadSheetSearchGetData() {
     }
 
     $.jsonp({
-        "url": spreadSheetData.setup.url + "?alt=json-in-script&callback=?",
+        "url": spreadSheetData.setup.url,
         "callback": "spreadSheedSearchCallback",
         "success": spreadSheedSearchCallback,
         "error": function () {

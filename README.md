@@ -1,4 +1,4 @@
-A Script That allows you to add a search box to your site that Searches a Google SpreadSheet and displays the result as a table
+A Script That allows you to add a search box to your site that Searches a web published Google SpreadSheet and displays the result as a table
 
 Depends on:
 ------------------
@@ -10,4 +10,5 @@ Setup:
 spreadSheeData.setup take URL and IDs of required Elements and URL of the spreadSheet as cells feed
 
 in index.html
-spreadSheetData.setup.url  = ''The URL of the spreadshee to be searched"
+spreadSheetData.setup.pageid  = ''Its a long string of random ch that you letters in the the URL of the spreadsheet"
+spreadSheetData.setup.sheetid  = ''Id of the worksheet in the spreadsheet to be searched usually '1' if it is first worksheet the file"
